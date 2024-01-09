@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { Olympic } from '../models/Olympic';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
-  private olympics$ = new BehaviorSubject<any>(undefined);
+  private olympics$ = new BehaviorSubject<Olympic[]>([]);
 
   constructor(private http: HttpClient) {}
 
@@ -19,8 +21,22 @@ export class OlympicService {
         // TODO: improve error handling
         console.error(error);
         // can be useful to end loading state and let the user know something went wrong
-        this.olympics$.next(null);
+        this.olympics$.next([]);
         return caught;
+      })
+    );
+  }
+
+  getOlympicEditionsCount(): Observable<number> {
+    return this.http.get<any[]>(this.olympicUrl).pipe(
+      map((countries) => {
+        const allYears = countries.flatMap((country) =>
+          country.participations.map(
+            (participation: { year: any }) => participation.year
+          )
+        );
+        const uniqueYears = new Set(allYears);
+        return uniqueYears.size;
       })
     );
   }
