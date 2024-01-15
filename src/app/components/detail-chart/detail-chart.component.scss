@@ -1,0 +1,8 @@
+.chart-container {
+  width: 100vw;
+  height: 30vh;
+}
+:host ::ng-deep .chart-container ngx-charts-line-chart {
+  width: 50%;
+  height: 100%;
+}

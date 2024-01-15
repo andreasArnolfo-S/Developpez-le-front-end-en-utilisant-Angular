@@ -1,1 +1,18 @@
-<p>detail works!</p>
+<button (click)="goBack()" class="details_btn">🔙</button>
+
+<div *ngIf="countryData && countryData.length > 0; else noData" class="detailsPage">
+  <div *ngFor="let olympic of countryData">
+    <h1 class="title">{{ olympic.country }}</h1>
+    <div class="details_container">
+      <div class="details_card">Number of entries <strong>{{ olympic.participations.length }}</strong></div>
+      <div class="details_card">Total number medals <strong>{{ getTotalMedals(olympic.participations) }}</strong></div>
+      <div class="details_card">Total number of athletes <strong>{{ getTotalAthletes(olympic.participations) }}</strong></div>
+    </div>
+  </div>
+  <app-detail-chart [countryData]="countryData"></app-detail-chart>
+
+</div>
+
+<ng-template #noData>
+  <p>Aucune donnée disponible pour ce pays.</p>
+</ng-template>

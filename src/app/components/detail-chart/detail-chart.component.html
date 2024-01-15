@@ -1,1 +1,16 @@
-<p>detail-chart works!</p>
+<div class="chart-container">
+  <ngx-charts-line-chart
+  [scheme]="chartOptions.colorScheme"
+  [results]="chartData"
+  [xAxis]="chartOptions.xAxis"
+  [yAxis]="chartOptions.yAxis"
+  [showYAxisLabel]="chartOptions.showYAxisLabel"
+  [showXAxisLabel]="chartOptions.showXAxisLabel"
+  [xAxisLabel]="chartOptions.xAxisLabel"
+  [yAxisLabel]="chartOptions.yAxisLabel"
+  [timeline]="chartOptions.timeline"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)">
+  </ngx-charts-line-chart>
+</div>

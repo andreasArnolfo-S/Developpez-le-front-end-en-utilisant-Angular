@@ -4,5 +4,5 @@
     <div class="home_card">Number of JOs <strong>{{ olympicEditionsCount$ | async }}</strong></div>
     <div class="home_card">Number of countries <strong>{{ (olympics$ | async)?.length }}</strong></div>
   </div>
-
+  <app-home-chart [olympics]="olympics$"></app-home-chart>
 </body>

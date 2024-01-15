@@ -1,0 +1,43 @@
+.details_btn {
+  background-color: transparent;
+  border: none;
+  padding: 1rem;
+  margin: .5rem;
+  width: 3vw;
+  height: 3rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.detailsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #04838f;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: #ffff;
+    text-align: center;
+  }
+  .details_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    .details_card {
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid #04838f;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  font-family: 'Nunito', sans-serif;
+}

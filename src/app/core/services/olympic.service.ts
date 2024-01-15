@@ -44,4 +44,9 @@ export class OlympicService {
   getOlympics() {
     return this.olympics$.asObservable();
   }
+  getOlympicsByCountry(countryName: string): Observable<Olympic[]> {
+    return this.olympics$.asObservable().pipe(
+      map((olympics) => olympics.filter((olympic) => olympic.country === countryName))
+    );
+  }
 }
