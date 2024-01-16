@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { Observable, map, of } from 'rxjs';
 import { LegendPosition } from '@swimlane/ngx-charts';
 import { Olympic } from 'src/app/core/models/Olympic';
 
@@ -59,11 +58,11 @@ export class DetailChartComponent implements OnInit {
     colorScheme: 'cool',
   };
   constructor() {}
-  onSelect(data: any): void {}
+  onSelect(data: ChartData): void {}
 
-  onActivate(data: any): void {}
+  onActivate(data: ChartData): void {}
 
-  onDeactivate(data: any): void {}
+  onDeactivate(data: ChartData): void {}
 
   ngOnInit(): void {
     // Création d'une nouvelle Map pour stocker les données de participation

@@ -6,7 +6,6 @@ import { OlympicService } from '../../core/services/olympic.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-
 interface ChartData {
   name: string;
   value: number;
@@ -42,18 +41,13 @@ export class HomeChartComponent implements OnInit {
   constructor(private olympicService: OlympicService, private router: Router) {}
 
   onSelect(data: ChartData): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
     // Navigate to the details page of the selected item
     this.router.navigateByUrl(`details/${data.name}`);
   }
 
-  onActivate(data: ChartData): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
+  onActivate(data: ChartData): void {}
 
-  onDeactivate(data: ChartData): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
+  onDeactivate(data: ChartData): void {}
 
   ngOnInit(): void {
     this.chartData$ = this.olympicService.getOlympics().pipe(
@@ -64,8 +58,8 @@ export class HomeChartComponent implements OnInit {
           const numberOfMedals = item.participations
             .map((participation) => participation.medalsCount)
             .reduce((a, b) => a + b, 0);
-            // Je retourne un objet qui contient le nom du pays et le nombre total de médailles,
-            // qui correspond au format attendu par ngx-charts pour afficher ces données dans le graphique.
+          // Je retourne un objet qui contient le nom du pays et le nombre total de médailles,
+          // qui correspond au format attendu par ngx-charts pour afficher ces données dans le graphique.
           return {
             name: item.country,
             value: numberOfMedals,
