@@ -2,7 +2,6 @@
 import { Participation } from './Participation';
 export interface Olympic {
   country: string;
-  numberOfMedals: number;
   participations: Participation[];
 }
 

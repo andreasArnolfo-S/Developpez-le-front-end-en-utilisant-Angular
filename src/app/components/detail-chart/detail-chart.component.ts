@@ -1,9 +1,11 @@
+// Imports
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LegendPosition } from '@swimlane/ngx-charts';
 import { Olympic } from 'src/app/core/models/Olympic';
 
+// Interface for chart data structure
 interface ChartData {
   series: [
     {
@@ -13,6 +15,7 @@ interface ChartData {
   ];
 }
 
+  // Interface for chart configuration options
 interface ChartOptions {
   view: [number, number];
   legend: boolean;
@@ -37,10 +40,12 @@ interface ChartOptions {
   templateUrl: './detail-chart.component.html',
   styleUrls: ['./detail-chart.component.scss'],
 })
+// Component to display detailed Olympic participation data in a chart
 export class DetailChartComponent implements OnInit {
-  @Input() countryData: Olympic[] = [];
-  public chartData: ChartData[] = [];
+  @Input() countryData: Olympic[] = []; // Input data for the countries' Olympic performance
+  public chartData: ChartData[] = []; // Processed data ready for the chart
 
+  // Configuration options for the chart
   public chartOptions: ChartOptions = {
     view: [900, 600],
     legend: true,
@@ -64,27 +69,28 @@ export class DetailChartComponent implements OnInit {
 
   onDeactivate(data: ChartData): void {}
 
+  /**
+   * Initializes the component with the necessary data for chart rendering.
+   *
+   * @return {void} This function does not return anything.
+   */
   ngOnInit(): void {
-    // Création d'une nouvelle Map pour stocker les données de participation
+    // Build new Map
     const seriesMap = new Map();
 
-    // Bouclez sur chaque objet Olympic dans le tableau countryData.
+    // Organize data into seriesMap
     for (const olympic of this.countryData) {
-      // Bouclez sur chaque participation de l'objet olympique actuel.
       for (const participation of olympic.participations) {
-        // Vérifiez si le pays est déjà une clé dans la Map seriesMap.
         if (!seriesMap.has(olympic.country)) {
-          // Si le pays n'est pas encore une clé, ajoutez-le avec un tableau vide comme valeur.
           seriesMap.set(olympic.country, []);
         }
-        // Accédez à la série de participations pour le pays et ajoutez les données de participation actuelles.
         seriesMap.get(olympic.country).push({
           name: participation.year.toString(),
           value: participation.medalsCount,
         });
       }
     }
-    // Convertissez la Map en un tableau de données utilisable par ngx-charts.
+    // Convert seriesMap to chartData array
     this.chartData = Array.from(seriesMap, ([name, series]) => ({
       name,
       series,

@@ -6,10 +6,12 @@ import { OlympicService } from '../../core/services/olympic.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+// Defines the structure of the chart data
 interface ChartData {
   name: string;
   value: number;
 }
+// Defines chart configuration options
 interface ChartOptions {
   gradient: boolean;
   showLegend: boolean;
@@ -40,8 +42,13 @@ export class HomeChartComponent implements OnInit {
   };
   constructor(private olympicService: OlympicService, private router: Router) {}
 
+  /**
+   * Handles the selection of a chart item.
+   * Navigates to the details page of the selected country when a chart item is clicked
+   * @param {ChartData} data - The selected chart data.
+   * @return {void} - This function does not return a value.
+   */
   onSelect(data: ChartData): void {
-    // Navigate to the details page of the selected item
     this.router.navigateByUrl(`details/${data.name}`);
   }
 
@@ -49,17 +56,20 @@ export class HomeChartComponent implements OnInit {
 
   onDeactivate(data: ChartData): void {}
 
+  /**
+   * Initializes the component and sets up the chart data.
+   *
+   * @return {void} This function does not return a value.
+   */
   ngOnInit(): void {
     this.chartData$ = this.olympicService.getOlympics().pipe(
-      // Pour chaque élément du tableau `data`
       map((data) =>
-        // Pour chaque pays (item), je calcule le nombre total de médailles obtenues.
         data.map((item) => {
+          // Sum all medals from the participations array for each country
           const numberOfMedals = item.participations
             .map((participation) => participation.medalsCount)
             .reduce((a, b) => a + b, 0);
-          // Je retourne un objet qui contient le nom du pays et le nombre total de médailles,
-          // qui correspond au format attendu par ngx-charts pour afficher ces données dans le graphique.
+          // Return the country name and total medals for chart consumption
           return {
             name: item.country,
             value: numberOfMedals,

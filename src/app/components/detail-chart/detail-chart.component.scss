@@ -1,8 +1,15 @@
 .chart-container {
-  width: 100vw;
-  height: 30vh;
+  width: 50vw;
+  height: 50vh;
 }
 :host ::ng-deep .chart-container ngx-charts-line-chart {
   width: 50%;
   height: 100%;
+}
+
+//responsive design
+@media screen and (max-width: 768px) {
+  .chart-container {
+    width: 100vw;
+  }
 }
