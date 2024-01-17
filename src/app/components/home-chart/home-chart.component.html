@@ -1,7 +1,6 @@
 <div class="chart-container">
   <ngx-charts-pie-chart  [scheme]="chartOptions.colorScheme"
     [gradient]="chartOptions.gradient" [legend]="chartOptions.showLegend" [legendPosition]="chartOptions.legendPosition"
-    [results]="chartData$ | async" [labels]="chartOptions.showLabels" (select)="onSelect($event)"
-    (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+    [results]="chartData$ | async" [labels]="chartOptions.showLabels" (select)="onSelect($event)">
   </ngx-charts-pie-chart>
 </div>

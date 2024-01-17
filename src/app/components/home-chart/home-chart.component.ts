@@ -52,10 +52,6 @@ export class HomeChartComponent implements OnInit {
     this.router.navigateByUrl(`details/${data.name}`);
   }
 
-  onActivate(data: ChartData): void {}
-
-  onDeactivate(data: ChartData): void {}
-
   /**
    * Initializes the component and sets up the chart data.
    *
