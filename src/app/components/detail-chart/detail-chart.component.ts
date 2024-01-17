@@ -63,11 +63,7 @@ export class DetailChartComponent implements OnInit {
     colorScheme: 'cool',
   };
   constructor() {}
-  onSelect(data: ChartData): void {}
 
-  onActivate(data: ChartData): void {}
-
-  onDeactivate(data: ChartData): void {}
 
   /**
    * Initializes the component with the necessary data for chart rendering.
