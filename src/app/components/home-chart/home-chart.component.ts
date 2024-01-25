@@ -29,6 +29,7 @@ interface ChartOptions {
   styleUrls: ['./home-chart.component.scss'],
 })
 export class HomeChartComponent implements OnInit {
+
   @Input() olympics: Observable<Olympic[]> = of([]);
   public chartData$: Observable<ChartData[]> = of([]);
 
