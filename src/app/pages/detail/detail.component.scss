@@ -13,6 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-height: 100vh;
   .title {
     font-size: 2rem;
     font-weight: bold;
@@ -36,4 +37,13 @@
   }
 }
 
+// responsive design
+@media screen and (max-width: 768px) {
+  .details_btn {
+    font-size: 1.5rem;
+  }
 
+  .details_card {
+    font-size: .7rem;
+  }
+}

@@ -4,9 +4,9 @@
   <div *ngFor="let olympic of countryData">
     <h1 class="title">{{ olympic.country }}</h1>
     <div class="details_container">
-      <div class="details_card">Number of entries <strong>{{ olympic.participations.length }}</strong></div>
-      <div class="details_card">Total number medals <strong>{{ getTotalMedals(olympic.participations) }}</strong></div>
-      <div class="details_card">Total number of athletes <strong>{{ getTotalAthletes(olympic.participations) }}</strong></div>
+      <div class="details_card">Number of entries : <strong>{{ olympic.participations.length }}</strong></div>
+      <div class="details_card">Total number medals : <strong>{{ getTotalMedals(olympic.participations) }}</strong></div>
+      <div class="details_card">Total number of athletes : <strong>{{ getTotalAthletes(olympic.participations) }}</strong></div>
     </div>
   </div>
   <app-detail-chart [countryData]="countryData"></app-detail-chart>
